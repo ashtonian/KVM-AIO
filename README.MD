@@ -16,7 +16,7 @@ This is a derivative of [OSX-KVM](https://github.com/kholia/OSX-KVM).
 ```sh
 
 # Install Dependencies 
-sudo apt-get install rsync qemu uml-utilities virt-manager git \
+sudo apt-get swtpm libtpms0 install rsync dkms qemu uml-utilities virt-manager git \
     wget libguestfs-tools p7zip-full  make dmg2img -y
 
 # Get latest opencore efi 
@@ -69,34 +69,42 @@ dmesg | grep -i iommu
 # Get PCIE info check reset functionality 
 ./scripts/list_iommu_groups.sh 
 
-## ...
-## IOMMU group 18
-## [RESET]	01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)
-## IOMMU group 19
-## [RESET]	02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
-## IOMMU group 20
-## [RESET]	03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT / 6800M] [1002:73df] (rev c1)
-## IOMMU group 21
-## 	03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 HDMI Audio [Radeon RX 6800/6800 XT / 6900 XT] [1002:ab28]
-## IOMMU group 22
-## [RESET]	04:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
-## IOMMU group 23
-## [RESET]	06:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
-## IOMMU group 24
-## [RESET]	07:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller I225-V [8086:15f3] (rev 03)
-## IOMMU group 25
-## [RESET]	08:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
-## IOMMU group 26
-## [RESET]	09:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz [8086:2725] (rev 1a)
-## IOMMU group 27
-## [RESET]	0a:00.0 SATA controller [0106]: ASMedia Technology Inc. ASM1062 Serial ATA Controller [1b21:0612] (rev 02)
-## IOMMU group 28
-## [RESET]	0b:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin [Radeon RX 550 640SP / RX 560/560X] [1002:67ff] (rev cf)
-## 	0b:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X] [1002:aae0]
-## IOMMU group 29
-## [RESET]	0d:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+# IOMMU group 19
+# [RESET]	01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)
+# IOMMU group 20
+# [RESET]	02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+# IOMMU group 21
+# [RESET]	03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT / 6800M] [1002:73df] (rev c1)
+# IOMMU group 22
+# 	03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 HDMI Audio [Radeon RX 6800/6800 XT / 6900 XT] [1002:ab28]
+# IOMMU group 23
+# [RESET]	04:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
+# IOMMU group 24
+# [RESET]	05:00.0 Ethernet controller [0200]: Aquantia Corp. Device [1d6a:14c0] (rev 03)
+# IOMMU group 25
+# [RESET]	07:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
+# IOMMU group 26
+# [RESET]	08:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller I225-V [8086:15f3] (rev 03)
+# IOMMU group 27
+# [RESET]	09:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
+# IOMMU group 28
+# [RESET]	0a:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz [8086:2725] (rev 1a)
+# IOMMU group 29
+# [RESET]	0b:00.0 SATA controller [0106]: ASMedia Technology Inc. ASM1062 Serial ATA Controller [1b21:0612] (rev 02)
+# IOMMU group 30
+# [RESET]	0c:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin [Radeon RX 550 640SP / RX 560/560X] [1002:67ff] (rev cf)
+# 	0c:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X] [1002:aae0]
+# IOMMU group 31
+# [RESET]	0d:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
+# IOMMU group 32
+# [RESET]	0e:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
 
-
+CONFIG_FTRACE=y
+CONFIG_KPROBES=y
+CONFIG_PCI_QUIRKS=y
+CONFIG_KALLSYMS=y
+CONFIG_KALLSYMS_ALL=y
+CONFIG_FUNCTION_TRACER=y
 
 # update /etc/default/grub w/ pci isolation and intel init 
 sudo nano /etc/default/grub 
@@ -133,15 +141,40 @@ sudo udevadm trigger
 
 # Isolate IOMMU groups better 
 ## Not sure if this is needed for all 
-sudo ./scripts/vfio-group.sh 20
 sudo ./scripts/vfio-group.sh 21
-sudo ./scripts/vfio-group.sh 25
-sudo ./scripts/vfio-group.sh 28
+sudo ./scripts/vfio-group.sh 22
+sudo ./scripts/vfio-group.sh 27
+sudo ./scripts/vfio-group.sh 30
+sudo ./scripts/vfio-group.sh 31
+
+# amd reset bug fix 
+# install gnif vendor-reset 
+cd ~
+git clone https://github.com/gnif/vendor-reset
+cd vendor-reset
+sudo dkms install .
+# load module 
+echo 'vendor-reset' | sudo tee -a /etc/modules
+
+# setup initial hook tool 
+sudo mkdir -p /etc/libvirt/hooks
+sudo wget 'https://raw.githubusercontent.com/PassthroughPOST/VFIO-Tools/master/libvirt_hooks/qemu' -O /etc/libvirt/hooks/qemu
+sudo chmod +x /etc/libvirt/hooks/qemu
+sudo service libvirtd restart
+
+
+# update vm name and pci dev id in ./scripts/reset-hook.sh
+sudo mkdir -p /etc/libvirt/hooks/qemu.d/macOS/start/begin
+sudo cp ./scripts/reset-gpu.sh /etc/libvirt/hooks/qemu.d/macOS/start/begin/reset-gpu.sh
+sudo chmod +x /etc/libvirt/hooks/qemu.d/macOS/start/begin
+
 
 # update  grub and initramfs
 sudo update-grub2
 sudo update-initramfs -k all -u
 sudo reboot now 
+
+
 ```
 
 #### Update virt machine xml 
