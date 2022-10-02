@@ -214,6 +214,61 @@ CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ   MINMHZ      MHZ
  23    0      0   15 39:39:9:0        yes 3900.0000 800.0000 3200.000
 ```
 
+#### Enable host netoworking 
+
+```sh
+ip link show
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: enp5s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
+    link/ether f8:02:78:21:a5:0f brd ff:ff:ff:ff:ff:ff
+3: enp8s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN mode DEFAULT group default qlen 1000
+    link/ether d8:bb:c1:a2:61:a1 brd ff:ff:ff:ff:ff:ff
+4: wlp10s0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000
+    link/ether 80:45:dd:73:f4:47 brd ff:ff:ff:ff:ff:ff
+5: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default qlen 1000
+    link/ether 52:54:00:67:16:52 brd ff:ff:ff:ff:ff:ff
+6: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN mode DEFAULT group default 
+    link/ether 02:42:8b:29:bb:35 brd ff:ff:ff:ff:ff:ff
+
+#can't use wifi without more hacks due to wifi ap protocol 
+sudo tee -a /etc/netplan/01-kvmbridge.yaml > /dev/null <<EOT
+network:
+  ethernets:
+    enp8s0:
+      dhcp4: false
+  bridges:
+    br0:
+      interfaces: [enp8s0]
+      dhcp4: true
+      mtu: 1500
+      parameters:
+        stp: true
+        forward-delay: 15
+EOT
+
+sudo netplan try
+sudo netplan apply
+
+virsh net-define ./kvmbridge.xml
+virsh net-start host-bridge
+virsh net-autostart host-bridge
+
+# Select Bridge in vm config 
+```
+
+#### Update EFI w/usbmap
+
+```sh
+git clone https://github.com/corpnewt/ProperTree
+sudo apt-get install python3-tk
+python3 ./ProperTree/ProperTree.py
+
+git clone https://github.com/corpnewt/GenSMBIOS
+python3 ./GenSMBIOS/GenSMBIOS.py
+
+
+```
 
 
 ## References 
@@ -231,7 +286,3 @@ Reference
 ```
 hugetlbfs /dev/hugepages hugetlbfs defaults /etc/fstab 
 ```
-
-* Update OVMF see notes
-* amd reset bug 
-* ROM via VBFlash 
