@@ -267,6 +267,9 @@ python3 ./ProperTree/ProperTree.py
 git clone https://github.com/corpnewt/GenSMBIOS
 python3 ./GenSMBIOS/GenSMBIOS.py
 
+cd KVM-AIO
+cp ./opencore-image-ng.sh ./
+sudo ./opencore-image-ng.sh --cfg ./EFI/OC/config.plist --img OpenCore.qcow2 
 
 ```
 
