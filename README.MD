@@ -69,35 +69,43 @@ dmesg | grep -i iommu
 # Get PCIE info check reset functionality 
 ./scripts/list_iommu_groups.sh 
 
-# IOMMU group 19
-# [RESET]	01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)
-# IOMMU group 20
-# [RESET]	02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
-# IOMMU group 21
-# [RESET]	03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT / 6800M] [1002:73df] (rev c1)
-# IOMMU group 22
-# 	03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 HDMI Audio [Radeon RX 6800/6800 XT / 6900 XT] [1002:ab28]
-# IOMMU group 23
-# [RESET]	04:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
-# IOMMU group 24
-# [RESET]	05:00.0 Ethernet controller [0200]: Aquantia Corp. Device [1d6a:14c0] (rev 03)
-# IOMMU group 25
-# [RESET]	07:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
-# IOMMU group 26
-# [RESET]	08:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller I225-V [8086:15f3] (rev 03)
-# IOMMU group 27
-# [RESET]	09:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
-# IOMMU group 28
-# [RESET]	0a:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz [8086:2725] (rev 1a)
-# IOMMU group 29
-# [RESET]	0b:00.0 SATA controller [0106]: ASMedia Technology Inc. ASM1062 Serial ATA Controller [1b21:0612] (rev 02)
-# IOMMU group 30
-# [RESET]	0c:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin [Radeon RX 550 640SP / RX 560/560X] [1002:67ff] (rev cf)
-# 	0c:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Baffin HDMI/DP Audio [Radeon RX 550 640SP / RX 560/560X] [1002:aae0]
-# IOMMU group 31
-# [RESET]	0d:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
-# IOMMU group 32
-# [RESET]	0e:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+	00:1f.5 Serial bus controller [0c80]: Intel Corporation Device [8086:7aa4] (rev 11)
+IOMMU group 19
+[RESET]	01:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)
+IOMMU group 20
+[RESET]	02:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+IOMMU group 21
+[RESET]	03:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT / 6800M] [1002:73df] (rev c1)
+IOMMU group 22
+	03:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 HDMI Audio [Radeon RX 6800/6800 XT / 6900 XT] [1002:ab28]
+IOMMU group 23
+[RESET]	04:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
+IOMMU group 24
+[RESET]	05:00.0 Ethernet controller [0200]: Aquantia Corp. Device [1d6a:14c0] (rev 03)
+IOMMU group 25
+[RESET]	07:00.0 Non-Volatile memory controller [0108]: Sandisk Corp WD PC SN810 / Black SN850 NVMe SSD [15b7:5011] (rev 01)
+IOMMU group 26
+[RESET]	08:00.0 Ethernet controller [0200]: Intel Corporation Ethernet Controller I225-V [8086:15f3] (rev 03)
+IOMMU group 27
+[RESET]	09:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
+IOMMU group 28
+[RESET]	0a:00.0 Network controller [0280]: Intel Corporation Wi-Fi 6 AX210/AX211/AX411 160MHz [8086:2725] (rev 1a)
+IOMMU group 29
+[RESET]	0b:00.0 SATA controller [0106]: ASMedia Technology Inc. ASM1062 Serial ATA Controller [1b21:0612] (rev 02)
+IOMMU group 30
+[RESET]	0c:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Upstream Port of PCI Express Switch [1002:1478] (rev c1)
+IOMMU group 31
+[RESET]	0d:00.0 PCI bridge [0604]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 10 XL Downstream Port of PCI Express Switch [1002:1479]
+
+IOMMU group 32
+[RESET]	0e:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 23 [Radeon RX 6600/6600 XT/6600M] [1002:73ff] (rev c1)
+IOMMU group 33
+	0e:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21 HDMI Audio [Radeon RX 6800/6800 XT / 6900 XT] [1002:ab28]
+IOMMU group 34
+[RESET]	0f:00.0 USB controller [0c03]: ASMedia Technology Inc. ASM2142 USB 3.1 Host Controller [1b21:2142]
+IOMMU group 35
+[RESET]	10:00.0 Non-Volatile memory controller [0108]: Samsung Electronics Co Ltd NVMe SSD Controller SM981/PM981/PM983 [144d:a808]
+
 
 CONFIG_FTRACE=y
 CONFIG_KPROBES=y
@@ -110,13 +118,13 @@ CONFIG_FUNCTION_TRACER=y
 sudo nano /etc/default/grub 
 ## cat /etc/default/grub
 ## ...
-## GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=1002:73df,1002:ab28,1002:67ff,1002:aae0,1b21:2142  quiet splash kvm.ignore_msrs=1 video=vesafb:off,efifb:off"
+## GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=1002:73df,1002:ab28,1002:73ff,1002:ab28,1b21:2142  quiet splash kvm.ignore_msrs=1 video=vesafb:off,efifb:off"
 ## ... 
 
 # update vfio.conf
 sudo nano /etc/modprobe.d/vfio.conf
 ## cat /etc/modprobe.d/vfio.conf
-## options vfio-pci ids=1002:73df,1002:ab28,1002:67ff,1002:aae0,1b21:2142 disable_vga=1
+## options vfio-pci ids=1002:73df,1002:ab28,1002:73ff,1002:ab28,1b21:2142 disable_vga=1
 ## softdep radeon pre: vfio-pci
 ## softdep amdgpu pre: vfio-pci
 ## softdep nouveau pre: vfio-pci
@@ -144,10 +152,11 @@ sudo udevadm trigger
 sudo ./scripts/vfio-group.sh 21
 sudo ./scripts/vfio-group.sh 22
 sudo ./scripts/vfio-group.sh 27
-sudo ./scripts/vfio-group.sh 30
-sudo ./scripts/vfio-group.sh 31
+sudo ./scripts/vfio-group.sh 34
+sudo ./scripts/vfio-group.sh 32
+sudo ./scripts/vfio-group.sh 33
 
-# amd reset bug fix 
+# amd reset bug fix if needed
 # install gnif vendor-reset 
 cd ~
 git clone https://github.com/gnif/vendor-reset
@@ -264,8 +273,7 @@ git clone https://github.com/corpnewt/ProperTree
 sudo apt-get install python3-tk
 python3 ./ProperTree/ProperTree.py
 
-git clone https://github.com/corpnewt/GenSMBIOS
-python3 ./GenSMBIOS/GenSMBIOS.py
+
 
 cd KVM-AIO
 cp ./opencore-image-ng.sh ./
@@ -273,6 +281,15 @@ sudo ./opencore-image-ng.sh --cfg ./EFI/OC/config.plist --img OpenCore.qcow2
 
 ```
 
+#### Setup iServices
+
+adjust smbios serial ect 
+```
+git clone https://github.com/corpnewt/GenSMBIOS
+python3 ./GenSMBIOS/GenSMBIOS.py
+```
+Check ethernet is set as builtin and working via
+* https://dortania.github.io/OpenCore-Post-Install/universal/iservices.html#making-en0-show-as-built-in
 
 ## References 
 
