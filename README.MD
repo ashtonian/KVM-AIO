@@ -118,7 +118,7 @@ CONFIG_FUNCTION_TRACER=y
 sudo nano /etc/default/grub 
 ## cat /etc/default/grub
 ## ...
-## GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=1002:73df,1002:ab28,1002:73ff,1002:ab28,1b21:2142  quiet splash kvm.ignore_msrs=1 video=vesafb:off,efifb:off"
+## GRUB_CMDLINE_LINUX_DEFAULT="intel_iommu=on iommu=pt vfio-pci.ids=1002:73df,1002:ab28,1002:73ff,1002:ab28,1b21:2142  quiet splash kvm.ignore_msrs=1 video=vesafb:off,efifb:off mitigations=off mds=off nopti isolcpus=0-19 nohz_full=0-19 pcie_aspm=off"
 ## ... 
 
 # update vfio.conf
@@ -246,9 +246,22 @@ network:
   ethernets:
     enp8s0:
       dhcp4: false
+      optional: true
+    enp5s0:
+      dhcp4: false
+      optional: true
+  bons:
+    bond0:
+      interfaces:
+      - enp5s0
+      - enp8s0
+      parameters:
+        primary: enp5s0
+        mode: active-backup
   bridges:
     br0:
-      interfaces: [enp8s0]
+      interfaces:
+      - bond0
       dhcp4: true
       mtu: 1500
       parameters:
@@ -258,6 +271,7 @@ EOT
 
 sudo netplan try
 sudo netplan apply
+sudo brctl addif br0 vnet0 # for adding with live vm 
 
 virsh net-define ./kvmbridge.xml
 virsh net-start host-bridge
@@ -281,6 +295,20 @@ sudo ./opencore-image-ng.sh --cfg ./EFI/OC/config.plist --img OpenCore.qcow2
 
 ```
 
+
+#### Audio #### 
+
+```sh
+sudo apt-get install libpulse-dev git make cmake
+git clone https://github.com/duncanthrax/scream.git
+cd ./scream/Receivers/unix
+mkdir build && cd build
+cmake ..
+make
+cp ./scream /usr/bin/
+```
+
+
 #### Setup iServices
 
 adjust smbios serial ect 
@@ -297,12 +325,3 @@ Check ethernet is set as builtin and working via
 * [PCI passthrough via ovmf](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF)
 * [KVM-Opencore](https://github.com/thenickdude/KVM-Opencore)
 * [Roar](https://github.com/tyllj/Roar)
-
-## TODO
-
-* [Huge pages](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#Dynamic_huge_pages)
-
-Reference
-```
-hugetlbfs /dev/hugepages hugetlbfs defaults /etc/fstab 
-```
