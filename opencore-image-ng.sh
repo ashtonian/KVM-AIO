@@ -141,6 +141,7 @@ msg "copy files to disk image"
 cp -v "$cfg" $WORK/config.plist
 fish mkdir /ESP/EFI
 fish mkdir /ESP/EFI/OC
+fish mkdir /ESP/EFI/BOOT
 fish mkdir /ESP/EFI/OC/Kexts
 fish mkdir /ESP/EFI/OC/ACPI
 fish mkdir /ESP/EFI/OC/Resources
